@@ -1,0 +1,8 @@
+prefix=/home/turner/Workspace/RosAndroid/devel
+
+Name: android_ui
+Description: Description of android_ui
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/turner/Workspace/RosAndroid/devel/lib 
+Requires: 

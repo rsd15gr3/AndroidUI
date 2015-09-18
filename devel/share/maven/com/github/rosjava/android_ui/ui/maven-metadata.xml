@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.github.rosjava.android_ui</groupId>
+  <artifactId>ui</artifactId>
+  <version>0.1.0</version>
+  <versioning>
+    <versions>
+      <version>0.1.0</version>
+    </versions>
+    <lastUpdated>20150917174725</lastUpdated>
+  </versioning>
+</metadata>
