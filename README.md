@@ -28,7 +28,7 @@ When you have completed step 5.1 you got an app that, connects to the roscore an
 Prerequisites: Android studio with API 15 installed(use the stand alone sdk manager).<br />
 //open bashrc<br />
 $ sudo gedit ~/.bachrc<br />
-add the following at the button<br />
+//add the following at the button<br />
 export PATH=${PATH}:/YourPath/Android/Sdk/tools:/YourPath/Android/Sdk/platform-tools:/YourPath/android-studio/bin<br />
 export ANDROID_HOME=/YourPath/Android/Sdk<br />
 
