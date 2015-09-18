@@ -3,7 +3,7 @@ Android App for the frobomind mobile robot, using ROSjava<br />
 
 #Creating a workspace with the git repo<br />
 (Not tested!)<br />
-Prerequisites: Android studio with API 15 installed(use the stand alone sdk manager).<br />
+Prerequisites: Android studio with API 15 installed(use the stand alone sdk manager). ROS Indigo. JavaROS and AndroidCore might be needed (look at Getting stated with ROSjava and Android Core below)<br />
 //open bashrc<br />
 $ sudo gedit ~/.bachrc<br />
 //add the following at the button<br />
@@ -22,7 +22,7 @@ Now Import (not open!) project at the path AndroidUI/src/android_ui in android s
 
 you should now be good to go.<br />
 
-#ROSjava and Android Core guides
+#Getting stated with ROSjava and Android Core
 This guide will help you make an app that connects to a roscore on the network and publish images from the camera.<br />
 Before you start you must have ROS indigo and Android Studio install on Ubuntu.<br />
 
