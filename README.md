@@ -22,12 +22,21 @@ Complete step 2 and 3.1 in this guide (http://wiki.ros.org/rosjava/Tutorials/ind
 Follow this guide (http://wiki.ros.org/android/Tutorials/indigo/Installation%20-%20ROS%20Development%20Environment) (from step 4.1). When you have completed step 5.1 you got an app that, connects to the roscore and published images from the mobile camera.
 
 
-To create a new workspace with the git repo (This has not been tested!, but should work as long as you have the android API 15 installed together with android studio):
+#To create a new workspace with the git repo 
+(Nottested!)
+Prerequisites: Android studio with API 15 installed(use the stand alone sdk manager).
+//open bashrc
+$ sudo gedit ~/.bachrc
+add the following at the button
+export PATH=${PATH}:/YourPath/Android/Sdk/tools:/YourPath/Android/Sdk/platform-tools:/YourPath/android-studio/bin
+export ANDROID_HOME=/YourPath/Android/Sdk
+
+//clone the repo
 $ git clone "repo url"
 $ cd AndroidUI
 $ catkin_make
 $ source devel/setup.bash
-#start android studio from the same terminal
+//start android studio from the same terminal
 $ /YourPath/android-studio/bin/studio.sh
 
 Now Import (not open!) project at the path AndroidUI/src/android_ui in android studio
