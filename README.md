@@ -1,6 +1,28 @@
 # AndroidUI<br />
 Android App for the frobomind mobile robot, using ROSjava<br />
 
+#Creating a workspace with the git repo<br />
+(Not tested!)<br />
+Prerequisites: Android studio with API 15 installed(use the stand alone sdk manager).<br />
+//open bashrc<br />
+$ sudo gedit ~/.bachrc<br />
+//add the following at the button<br />
+export PATH=${PATH}:/YourPath/Android/Sdk/tools:/YourPath/Android/Sdk/platform-tools:/YourPath/android-studio/bin<br />
+export ANDROID_HOME=/YourPath/Android/Sdk<br />
+
+//clone the repo<br />
+$ git clone "repo url"<br />
+$ cd AndroidUI<br />
+$ catkin_make<br />
+$ source devel/setup.bash<br />
+//start android studio from the same terminal<br />
+$ /YourPath/android-studio/bin/studio.sh<br />
+<br />
+Now Import (not open!) project at the path AndroidUI/src/android_ui in android studio<br />
+
+you should now be good to go.<br />
+
+#ROSjava and Android Core guides
 This guide will help you make an app that connects to a roscore on the network and publish images from the camera.<br />
 Before you start you must have ROS indigo and Android Studio install on Ubuntu.<br />
 
@@ -23,26 +45,7 @@ Follow this guide (http://wiki.ros.org/android/Tutorials/indigo/Installation%20-
 When you have completed step 5.1 you got an app that, connects to the roscore and published images from the mobile camera.<br />
 
 
-#To create a new workspace with the git repo <br />
-(Not tested!)<br />
-Prerequisites: Android studio with API 15 installed(use the stand alone sdk manager).<br />
-//open bashrc<br />
-$ sudo gedit ~/.bachrc<br />
-//add the following at the button<br />
-export PATH=${PATH}:/YourPath/Android/Sdk/tools:/YourPath/Android/Sdk/platform-tools:/YourPath/android-studio/bin<br />
-export ANDROID_HOME=/YourPath/Android/Sdk<br />
 
-//clone the repo<br />
-$ git clone "repo url"<br />
-$ cd AndroidUI<br />
-$ catkin_make<br />
-$ source devel/setup.bash<br />
-//start android studio from the same terminal<br />
-$ /YourPath/android-studio/bin/studio.sh<br />
-<br />
-Now Import (not open!) project at the path AndroidUI/src/android_ui in android studio<br />
-
-you should now be good to go.<br />
 
 
 
