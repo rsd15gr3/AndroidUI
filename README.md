@@ -1,2 +1,2 @@
 # AndroidUI
-Android UI for the frobomind mobile robot, using ROSjava
+Android App for the frobomind mobile robot, using ROSjava
