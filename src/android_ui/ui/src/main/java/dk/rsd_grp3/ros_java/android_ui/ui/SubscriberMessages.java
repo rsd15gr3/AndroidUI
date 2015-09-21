@@ -17,7 +17,6 @@ import org.ros.node.topic.Subscriber;
 
 public class SubscriberMessages extends AbstractNodeMain {
 
-    //_onMessageRecived messagecallback;
     public Handler handler;
 
     @Override
@@ -28,13 +27,12 @@ public class SubscriberMessages extends AbstractNodeMain {
     @Override
     public void onStart(ConnectedNode connectedNode) {
         final Log log = connectedNode.getLog();
-        Subscriber<std_msgs.String> subscriber = connectedNode.newSubscriber("/chatter", std_msgs.String._TYPE);
+        Subscriber<std_msgs.String> subscriber = connectedNode.newSubscriber("/UIchatter", std_msgs.String._TYPE);
         subscriber.addMessageListener(new MessageListener<std_msgs.String>() {
             @Override
             public void onNewMessage(std_msgs.String message) {
                 log.info("I heard: \"" + message.getData() + "\"");
                 java.lang.String str = message.getData();
-                //messagecallback.onMessageRecived(str);
                 Message msg = handler.obtainMessage();
                 msg.obj = str;
                 handler.sendMessage(msg);
@@ -42,7 +40,4 @@ public class SubscriberMessages extends AbstractNodeMain {
         });
     }
 
-   /* public interface _onMessageRecived{
-        void onMessageRecived(java.lang.String msg);
-    }*/
 }

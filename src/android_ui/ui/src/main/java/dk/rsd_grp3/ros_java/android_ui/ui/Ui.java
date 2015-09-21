@@ -1,12 +1,16 @@
 package dk.rsd_grp3.ros_java.android_ui.ui;
 
 //import android.app.Activity;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.ros.android.RosActivity;
@@ -17,6 +21,7 @@ public class Ui extends RosActivity
 {
     private PublishButtons Buttontalker;
     private SubscriberMessages MessageListener;
+    private String ConsoleText = "";
     public Ui() {
         // The RosActivity constructor configures the notification title and ticker
         // messages.
@@ -33,6 +38,11 @@ public class Ui extends RosActivity
         final Button button2 = (Button) findViewById(R.id.button2);
         final Button button3 = (Button) findViewById(R.id.button3);
         final Button button4 = (Button) findViewById(R.id.button4);
+        final Button button5 = (Button) findViewById(R.id.button5);
+        final Button button6 = (Button) findViewById(R.id.button6);
+        final Button button7 = (Button) findViewById(R.id.button7);
+        final Button button8 = (Button) findViewById(R.id.button8);
+
 
         button1.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View view, MotionEvent event) {
@@ -58,6 +68,30 @@ public class Ui extends RosActivity
                 return false;
             }
         });
+        button5.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View view, MotionEvent event) {
+                updateButton(5);
+                return false;
+            }
+        });
+        button6.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View view, MotionEvent event) {
+                updateButton(6);
+                return false;
+            }
+        });
+        button7.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View view, MotionEvent event) {
+                updateButton(7);
+                return false;
+            }
+        });
+        button8.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View view, MotionEvent event) {
+                updateButton(8);
+                return false;
+            }
+        });
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -79,6 +113,34 @@ public class Ui extends RosActivity
                 releasedButton();
             }
         });
+        button5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                releasedButton();
+            }
+        });
+        button6.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                releasedButton();
+            }
+        });
+        button7.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                releasedButton();
+            }
+        });
+        button8.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                releasedButton();
+            }
+        });
+
+
+        //Style, styling from code, (easyest way to keep button style)
+        button4.getBackground().setColorFilter(0xFF661111, PorterDuff.Mode.MULTIPLY);
+        button2.getBackground().setColorFilter(0xFF116611, PorterDuff.Mode.MULTIPLY);
+        button5.getBackground().setColorFilter(0xFF116611, PorterDuff.Mode.MULTIPLY);
+        button6.getBackground().setColorFilter(0xFF116611, PorterDuff.Mode.MULTIPLY);
+        button7.getBackground().setColorFilter(0xFF116611, PorterDuff.Mode.MULTIPLY);
     }
 
     public void releasedButton(){
@@ -87,15 +149,6 @@ public class Ui extends RosActivity
     public void updateButton(int _Buttonnumber){
         Buttontalker.updateKey(_Buttonnumber);
     }
-
-
-    /*public void onMessageRecived(java.lang.String msg)
-    {
-        if(msg != null)
-        {
-        TextView text = (TextView) findViewById(R.id.TextBox);
-        text.setText(msg);}
-    }*/
 
     @Override
     protected void init(NodeMainExecutor nodeMainExecutor) {
@@ -113,7 +166,12 @@ public class Ui extends RosActivity
         public void handleMessage(Message msg) {
 
                 TextView text = (TextView) findViewById(R.id.TextBox);
-                text.setText((String) msg.obj);
+                ConsoleText += "\n" + "> " + (String) msg.obj;
+
+                text.setText(ConsoleText);
+
+                ScrollView consoleview = (ScrollView) findViewById(R.id.ConsoleScrollView);
+                consoleview.fullScroll(View.FOCUS_DOWN);
 
             super.handleMessage(msg);
         }
