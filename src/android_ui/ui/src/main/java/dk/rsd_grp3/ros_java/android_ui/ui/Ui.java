@@ -87,7 +87,7 @@ public class Ui extends RosActivity implements SubscriberMessages._onMessageReci
     }
 
 
-    public void onMessageRecived(String msg)
+    public void onMessageRecived(java.lang.String msg)
     {
         TextView text = (TextView) findViewById(R.id.TextBox);
         text.setText(msg);

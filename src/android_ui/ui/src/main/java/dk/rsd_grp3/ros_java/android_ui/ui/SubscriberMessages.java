@@ -19,7 +19,11 @@ import std_msgs.String;
 
 public class SubscriberMessages extends AbstractNodeMain {
 
-    _onMessageRecived messagecallback;
+    _onMessageRecived messagecallback = new _onMessageRecived() {
+        public void onMessageRecived(java.lang.String msg) {
+
+        }
+    };
 
     @Override
     public GraphName getDefaultNodeName() {
@@ -33,8 +37,8 @@ public class SubscriberMessages extends AbstractNodeMain {
         subscriber.addMessageListener(new MessageListener<std_msgs.String>() {
             @Override
             public void onNewMessage(std_msgs.String message) {
-                log.info("I heard: \"" + message.getData() + "\"");
                 java.lang.String str = message.getData();
+                log.info("I heard: \"" + str + "\"");
                 messagecallback.onMessageRecived(str);
             }
         });
