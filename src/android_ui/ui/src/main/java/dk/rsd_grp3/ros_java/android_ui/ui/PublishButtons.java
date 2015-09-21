@@ -43,7 +43,9 @@ public class PublishButtons extends AbstractNodeMain{
             protected void loop() throws InterruptedException {
                 std_msgs.Int32 butnum = publisher.newMessage();
                 butnum.setData(butNumber);
-                publisher.publish(butnum);
+                if (butNumber!=0){
+                    publisher.publish(butnum);
+                }
                 Thread.sleep(50);
             }
         });

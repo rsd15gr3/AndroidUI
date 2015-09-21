@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
+import android.os.Vibrator;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ public class Ui extends RosActivity
     private PublishButtons Buttontalker;
     private SubscriberMessages MessageListener;
     private String ConsoleText = "";
+    private Vibrator myVib;
     public Ui() {
         // The RosActivity constructor configures the notification title and ticker
         // messages.
@@ -34,6 +36,7 @@ public class Ui extends RosActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         final Button button1 = (Button) findViewById(R.id.button1);
         final Button button2 = (Button) findViewById(R.id.button2);
         final Button button3 = (Button) findViewById(R.id.button3);
@@ -145,6 +148,7 @@ public class Ui extends RosActivity
 
     public void releasedButton(){
         Buttontalker.updateKey(0);
+        myVib.vibrate(50);
     }
     public void updateButton(int _Buttonnumber){
         Buttontalker.updateKey(_Buttonnumber);
