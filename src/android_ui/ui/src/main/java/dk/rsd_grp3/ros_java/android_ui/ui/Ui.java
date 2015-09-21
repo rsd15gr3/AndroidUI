@@ -2,6 +2,8 @@ package dk.rsd_grp3.ros_java.android_ui.ui;
 
 //import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +13,7 @@ import org.ros.android.RosActivity;
 import org.ros.node.NodeMainExecutor;
 import org.ros.node.NodeConfiguration;
 
-public class Ui extends RosActivity implements SubscriberMessages._onMessageRecived
+public class Ui extends RosActivity
 {
     private PublishButtons Buttontalker;
     private SubscriberMessages MessageListener;
@@ -87,19 +89,35 @@ public class Ui extends RosActivity implements SubscriberMessages._onMessageReci
     }
 
 
-    public void onMessageRecived(java.lang.String msg)
+    /*public void onMessageRecived(java.lang.String msg)
     {
+        if(msg != null)
+        {
         TextView text = (TextView) findViewById(R.id.TextBox);
-        text.setText(msg);
-    }
+        text.setText(msg);}
+    }*/
 
     @Override
     protected void init(NodeMainExecutor nodeMainExecutor) {
         Buttontalker = new PublishButtons();
         MessageListener = new SubscriberMessages();
+        MessageListener.handler = this.handler;
         NodeConfiguration nodeConfiguration = NodeConfiguration.newPublic(getRosHostname());
         nodeConfiguration.setMasterUri(getMasterUri());
         nodeMainExecutor.execute(Buttontalker, nodeConfiguration);
         nodeMainExecutor.execute(MessageListener,nodeConfiguration);
     }
+
+    final Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+
+                TextView text = (TextView) findViewById(R.id.TextBox);
+                text.setText((String) msg.obj);
+
+            super.handleMessage(msg);
+        }
+    };
+
+
 }
