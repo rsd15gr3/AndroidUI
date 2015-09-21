@@ -5,8 +5,6 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.os.Vibrator;
@@ -22,7 +20,9 @@ public class Ui extends RosActivity
 {
     private PublishButtons Buttontalker;
     private SubscriberMessages MessageListener;
-    private String ConsoleText = "";
+    private ScrollView consoleview;
+    private TextView consoleTextView;
+    private String consoleText = "";
     private Vibrator myVib;
     public Ui() {
         // The RosActivity constructor configures the notification title and ticker
@@ -37,6 +37,8 @@ public class Ui extends RosActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
+        consoleTextView = (TextView) findViewById(R.id.TextBox);
+        consoleview = (ScrollView) findViewById(R.id.ConsoleScrollView);
         final Button button1 = (Button) findViewById(R.id.button1);
         final Button button2 = (Button) findViewById(R.id.button2);
         final Button button3 = (Button) findViewById(R.id.button3);
@@ -162,24 +164,32 @@ public class Ui extends RosActivity
         NodeConfiguration nodeConfiguration = NodeConfiguration.newPublic(getRosHostname());
         nodeConfiguration.setMasterUri(getMasterUri());
         nodeMainExecutor.execute(Buttontalker, nodeConfiguration);
-        nodeMainExecutor.execute(MessageListener,nodeConfiguration);
+        nodeMainExecutor.execute(MessageListener, nodeConfiguration);
     }
 
     final Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-
-                TextView text = (TextView) findViewById(R.id.TextBox);
-                ConsoleText += "\n" + "> " + (String) msg.obj;
-
-                text.setText(ConsoleText);
-
-                ScrollView consoleview = (ScrollView) findViewById(R.id.ConsoleScrollView);
-                consoleview.fullScroll(View.FOCUS_DOWN);
-
+            consoleText += "\n" + "> " + (String) msg.obj;
+            consoleTextView.setText(consoleText);
+            consoleview.fullScroll(View.FOCUS_DOWN);
             super.handleMessage(msg);
         }
     };
 
+    @Override //restore text in console after screen rotation
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Read values from the "savedInstanceState"-object and put them in console
+        consoleText = savedInstanceState.getString("consoleText","");
+        consoleTextView.setText(consoleText);
+    }
+
+    @Override //save text in console before screen rotation
+    protected void onSaveInstanceState(Bundle outState) {
+        // Save the values you need from console into "outState"-object
+        outState.putString("consoleText", consoleText);
+        super.onSaveInstanceState(outState);
+    }
 
 }
