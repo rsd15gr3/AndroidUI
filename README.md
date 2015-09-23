@@ -4,15 +4,15 @@ Android App for the frobomind mobile robot, using ROSjava<br />
 #Creating a workspace with the git repo<br />
 (Tested on windows)<br />
 Prerequisites: Android studio with API 15 installed, but android studio normaly finds missing API by itself, and ask you to install.<br />
-//open bashrc (for ubuntu)<br />
-$ sudo gedit ~/.bachrc<br />
-//add the following at the button<br />
+//open bashrc (skip on windows)<br />
+$ sudo gedit ~/.bachrc (skip on windows)<br />
+//add the following at the button (skip on windows)<br />
 export PATH=${PATH}:/YourPath/Android/Sdk/tools:/YourPath/Android/Sdk/platform-tools:/YourPath/android-studio/bin<br />
 export ANDROID_HOME=/YourPath/Android/Sdk<br />
 
 //clone the repo (start from here on windows, The example uses "git bash")<br />
 $ git clone "repo url"<br />
-$ source devel/setup.bash (skip on windows ubuntu)<br />
+$ source devel/setup.bash (skip on windows)<br />
 //start android studio from the same terminal (skip on windows)<br />
 $ /YourPath/android-studio/bin/studio.sh (skip on windows, just start android studio)<br />
 <br />
