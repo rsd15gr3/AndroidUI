@@ -2,7 +2,7 @@
 Android App for the frobomind mobile robot, using ROSjava<br />
 
 #Creating a workspace with the git repo<br />
-(Not tested!)<br />
+(Tested on windows)<br />
 Prerequisites: Android studio with API 15 installed(use the stand alone sdk manager). ROS Indigo. ROSJava and AndroidCore might be needed (look at Getting stated with ROSjava and Android Core below)<br />
 //open bashrc<br />
 $ sudo gedit ~/.bachrc<br />
