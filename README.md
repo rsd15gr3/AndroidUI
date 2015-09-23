@@ -3,20 +3,18 @@ Android App for the frobomind mobile robot, using ROSjava<br />
 
 #Creating a workspace with the git repo<br />
 (Tested on windows)<br />
-Prerequisites: Android studio with API 15 installed(use the stand alone sdk manager). ROS Indigo. ROSJava and AndroidCore might be needed (look at Getting stated with ROSjava and Android Core below)<br />
-//open bashrc<br />
+Prerequisites: Android studio with API 15 installed, but android studio normaly finds missing API by itself, and ask you to install.<br />
+//open bashrc (for ubuntu)<br />
 $ sudo gedit ~/.bachrc<br />
 //add the following at the button<br />
 export PATH=${PATH}:/YourPath/Android/Sdk/tools:/YourPath/Android/Sdk/platform-tools:/YourPath/android-studio/bin<br />
 export ANDROID_HOME=/YourPath/Android/Sdk<br />
 
-//clone the repo<br />
+//clone the repo (start from here on windows, The example uses "git bash")<br />
 $ git clone "repo url"<br />
-$ cd AndroidUI<br />
-$ catkin_make<br />
-$ source devel/setup.bash<br />
-//start android studio from the same terminal<br />
-$ /YourPath/android-studio/bin/studio.sh<br />
+$ source devel/setup.bash (skip on windows ubuntu)<br />
+//start android studio from the same terminal (skip on windows)<br />
+$ /YourPath/android-studio/bin/studio.sh (skip on windows, just start android studio)<br />
 <br />
 Now Import (not open!) project at the path AndroidUI/src/android_ui in android studio<br />
 
